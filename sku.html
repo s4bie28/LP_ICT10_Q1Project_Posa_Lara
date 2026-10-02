@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SKU Generator</title>
+     <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>SKU Generator</h1>
+
+    <label>Product Category:</label>
+    <input type="text" id="category">
+
+    <br><br>
+
+    <label>Product Name:</label>
+    <input type="text" id="product_name">
+
+    <br><br>
+
+    <label>Stock Quantity:</label>
+    <input type="number" id="quantity">
+
+    <br><br>
+
+    <button onclick="generateSKU()">Generate SKU</button>
+
+    <h2 id="sku_output"></h2>
+
+    <br>
+
+    <a href="index.html">Go to Receipt Generator</a>
+
+    <script>
+        function generateSKU() {
+            let category = document.getElementById("category").value;
+            let product_name = document.getElementById("product_name").value;
+            let stock_qty = document.getElementById("quantity").value;
+
+            let sku = category.substring(0, 3).toUpperCase() + "-" +
+                      product_name.substring(0, 4).toUpperCase() + "-" +
+                      stock_qty;
+
+            document.getElementById("sku_output").innerHTML = "SKU: " + sku;
+        }
+    </script>
+
+</body>
+</html>

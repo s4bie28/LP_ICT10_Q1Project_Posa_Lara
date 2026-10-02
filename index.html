@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Receipt Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Sabie's Choowees</h1>
+
+    <h2>Dubai Chewy Cookies</h2>
+
+    <label>
+        <input type="checkbox" id="item1" value="100">
+        Original - ₱100
+    </label>
+
+    <br><br>
+
+    <label>
+        <input type="checkbox" id="item2" value="150">
+        Strawberry Flavored - ₱150
+    </label>
+
+    <br><br>
+
+    <label>
+        <input type="checkbox" id="item3" value="200">
+        Cookies and Cream Flavored - ₱215
+    </label>
+
+    <br><br>
+
+    <label>
+        <input type="checkbox" id="item4" value="250">
+        Matcha Flavored - ₱200
+    </label>
+
+    <br><br>
+
+    <label>
+        <input type="checkbox" id="item5" value="300">
+        Ube Flavored - ₱250
+    </label>
+
+    <br><br>
+
+    <button onclick="create_order()">Create Order</button>
+
+    <div id="show"></div>
+
+    <hr>
+
+    <a href="sku.html">Go to SKU Generator</a>
+
+    <script>
+        function create_order() {
+
+            let prod1 = document.getElementById("item1");
+            let prod2 = document.getElementById("item2");
+            let prod3 = document.getElementById("item3");
+            let prod4 = document.getElementById("item4");
+            let prod5 = document.getElementById("item5");
+
+            let subtotal =
+                (parseFloat(prod1.value) * prod1.checked) +
+                (parseFloat(prod2.value) * prod2.checked) +
+                (parseFloat(prod3.value) * prod3.checked) +
+                (parseFloat(prod4.value) * prod4.checked) +
+                (parseFloat(prod5.value) * prod5.checked);
+
+            let tax_rate = 0.12;
+            let tax = subtotal * tax_rate;
+            let total = subtotal + tax;
+
+            let receipt = `
+                <h3>==== Receipt ====</h3>
+
+                <p>Subtotal: ₱${subtotal.toFixed(2)}</p>
+
+                <p>Tax: ₱${tax.toFixed(2)}</p>
+
+                <p><strong>Total: ₱${total.toFixed(2)}</strong></p>
+            `;
+
+            document.getElementById("show").innerHTML = receipt;
+        }
+    </script>
+
+</body>
+</html>
